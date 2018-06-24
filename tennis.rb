@@ -32,9 +32,9 @@ class TennisGame1
       elsif (minusResult ==-1)
         result ="Advantage " + @player2Name
       elsif (minusResult>=2)
-        result = "Win for " + @player1Name
+        result = wins(@player1Name)
       else
-        result ="Win for " + @player2Name
+        result = wins(@player2Name)
       end
     else
       (1...3).each do |i|
@@ -53,6 +53,10 @@ class TennisGame1
       end
     end
     result
+  end
+
+  def wins(player)
+    "Win for #{player}"
   end
 end
 
