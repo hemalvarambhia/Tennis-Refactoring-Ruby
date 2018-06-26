@@ -28,9 +28,9 @@ class TennisGame1
     elsif (@p1points>=4 or @p2points>=4)
       minusResult = @p1points-@p2points
       if (minusResult==1)
-        result ="Advantage " + @player1Name
+        result = advantage(@player1Name)
       elsif (minusResult ==-1)
-        result ="Advantage " + @player2Name
+        result = advantage(@player2Name)
       elsif (minusResult>=2)
         result = wins(@player1Name)
       else
@@ -57,6 +57,10 @@ class TennisGame1
 
   def wins(player)
     "Win for #{player}"
+  end
+
+  def advantage(player)
+    "Advantage #{player}"
   end
 end
 
