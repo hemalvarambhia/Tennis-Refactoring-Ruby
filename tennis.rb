@@ -26,12 +26,11 @@ class TennisGame1
           2 => "Thirty-All",
       }.fetch(@p1points, "Deuce")
     elsif (@p1points>=4 or @p2points>=4)
-      minusResult = @p1points-@p2points
-      if (minusResult==1)
+      if (lead == 1)
         result = advantage(@player1Name)
-      elsif (minusResult ==-1)
+      elsif (lead ==-1)
         result = advantage(@player2Name)
-      elsif (minusResult>=2)
+      elsif (lead >= 2)
         result = wins(@player1Name)
       else
         result = wins(@player2Name)
@@ -61,6 +60,10 @@ class TennisGame1
 
   def advantage(player)
     "Advantage #{player}"
+  end
+
+  def lead
+    @p1points-@p2points
   end
 end
 
