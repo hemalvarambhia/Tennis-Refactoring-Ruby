@@ -25,10 +25,10 @@ class TennisGame1
     return 'Deuce' if deuce?
     if (@p1points==@p2points)
       {
-        0 => "Love-All",
-        1 => "Fifteen-All",
-        2 => "Thirty-All",
-      }[@p1points]
+        0 => "Love",
+        1 => "Fifteen",
+        2 => "Thirty",
+      }[@p1points] + "-All"
     elsif (@p1points>=4 || @p2points>=4)
       if (lead == 1)
         advantage(@player1Name)
