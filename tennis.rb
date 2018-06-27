@@ -22,12 +22,13 @@ class TennisGame1
   end
   
   def score
+    return 'Deuce' if deuce?
     if (@p1points==@p2points)
       {
         0 => "Love-All",
         1 => "Fifteen-All",
         2 => "Thirty-All",
-      }.fetch(@p1points, "Deuce")
+      }[@p1points]
     elsif (@p1points>=4 || @p2points>=4)
       if (lead == 1)
         advantage(@player1Name)
@@ -44,6 +45,10 @@ class TennisGame1
   end
 
   private
+  def deuce?
+    lead == 0 && @p1points >= 3
+  end
+  
   def wins(player)
     "Win for #{player}"
   end
