@@ -28,7 +28,7 @@ class TennisGame1
         1 => "Fifteen-All",
         2 => "Thirty-All",
       }.fetch(@p1points, "Deuce")
-    elsif (@p1points>=4 or @p2points>=4)
+    elsif (@p1points>=4 || @p2points>=4)
       if (lead == 1)
         advantage(@player1Name)
       elsif (lead ==-1)
