@@ -40,16 +40,7 @@ class TennisGame1
                  wins(@player2Name)
                end
     else
-      tempScore=0
-      (1..2).each do |i|
-        if (i==1)
-          tempScore = @p1points
-        else
-          result+="-"
-          tempScore = @p2points
-        end
-        result += POINTS_IN_WORDS[tempScore]
-      end
+      result = "#{POINTS_IN_WORDS[@p1points]}-#{POINTS_IN_WORDS[@p2points]}"
     end
     result
   end
