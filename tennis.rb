@@ -23,14 +23,14 @@ class TennisGame1
   
   def score
     result = ""
-    if (@p1points==@p2points)
-      result = {
-          0 => "Love-All",
-          1 => "Fifteen-All",
-          2 => "Thirty-All",
-      }.fetch(@p1points, "Deuce")
-    elsif (@p1points>=4 or @p2points>=4)
-      result = if (lead == 1)
+    result = if (@p1points==@p2points)
+               {
+                 0 => "Love-All",
+                 1 => "Fifteen-All",
+                 2 => "Thirty-All",
+               }.fetch(@p1points, "Deuce")
+             elsif (@p1points>=4 or @p2points>=4)
+               if (lead == 1)
                  advantage(@player1Name)
                elsif (lead ==-1)
                  advantage(@player2Name)
@@ -39,9 +39,9 @@ class TennisGame1
                else
                  wins(@player2Name)
                end
-    else
-      result = "#{POINTS_IN_WORDS[@p1points]}-#{POINTS_IN_WORDS[@p2points]}"
-    end
+             else
+               "#{POINTS_IN_WORDS[@p1points]}-#{POINTS_IN_WORDS[@p2points]}"
+             end
     result
   end
 
