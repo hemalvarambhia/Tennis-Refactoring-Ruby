@@ -1,6 +1,11 @@
 
 class TennisGame1
-
+  POINTS_IN_WORDS = {
+    0 => "Love",
+    1 => "Fifteen",
+    2 => "Thirty",
+    3 => "Forty",
+  }.freeze
   def initialize(player1Name, player2Name)
     @player1Name = player1Name
     @player2Name = player2Name
@@ -36,19 +41,14 @@ class TennisGame1
                end
     else
       tempScore=0
-      (1...3).each do |i|
+      (1..2).each do |i|
         if (i==1)
           tempScore = @p1points
         else
           result+="-"
           tempScore = @p2points
         end
-        result += {
-            0 => "Love",
-            1 => "Fifteen",
-            2 => "Thirty",
-            3 => "Forty",
-        }[tempScore]
+        result += POINTS_IN_WORDS[tempScore]
       end
     end
     result
