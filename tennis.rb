@@ -44,6 +44,7 @@ class TennisGame1
     result
   end
 
+  private
   def wins(player)
     "Win for #{player}"
   end
@@ -53,7 +54,7 @@ class TennisGame1
   end
 
   def lead
-    @p1points-@p2points
+    @p1points - @p2points
   end
 end
 
