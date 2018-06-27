@@ -18,7 +18,6 @@ class TennisGame1
   
   def score
     result = ""
-    tempScore=0
     if (@p1points==@p2points)
       result = {
           0 => "Love-All",
@@ -36,6 +35,7 @@ class TennisGame1
                  wins(@player2Name)
                end
     else
+      tempScore=0
       (1...3).each do |i|
         if (i==1)
           tempScore = @p1points
