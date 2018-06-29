@@ -24,7 +24,7 @@ class TennisGame1
   def score
     return 'Deuce' if deuce?
     if (@p1points==@p2points)
-      POINTS_IN_WORDS[@p1points] + "-All"
+      in_words(@p1points) + "-All"
     elsif (@p1points>=4 || @p2points>=4)
       if (lead == 1)
         advantage(@player1Name)
@@ -36,7 +36,7 @@ class TennisGame1
         wins(@player2Name)
        end
     else
-      "#{POINTS_IN_WORDS[@p1points]}-#{POINTS_IN_WORDS[@p2points]}"
+      "#{in_words(@p1points)}-#{in_words(@p2points)}"
     end
   end
 
@@ -55,6 +55,10 @@ class TennisGame1
 
   def lead
     @p1points - @p2points
+  end
+
+  def in_words(points)
+    POINTS_IN_WORDS[points]
   end
 end
 
