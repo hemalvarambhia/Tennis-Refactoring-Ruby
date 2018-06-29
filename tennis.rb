@@ -6,6 +6,7 @@ class TennisGame1
     2 => "Thirty",
     3 => "Forty",
   }.freeze
+  attr_reader :player1Name, :p1points, :player2Name, :p2points
   def initialize(player1Name, player2Name)
     @player1Name = player1Name
     @player2Name = player2Name
@@ -23,26 +24,26 @@ class TennisGame1
   
   def score
     return 'Deuce' if deuce?
-    return "#{in_words(@p1points)}-All" if @p1points == @p2points
+    return "#{in_words(p1points)}-All" if p1points == p2points
 
-    if (@p1points>=4 || @p2points>=4)
+    if (p1points>=4 || p2points>=4)
       if (lead == 1)
-        advantage(@player1Name)
+        advantage(player1Name)
       elsif (lead == -1)
-        advantage(@player2Name)
+        advantage(player2Name)
       elsif (lead >= 2)
-        wins(@player1Name)
+        wins(player1Name)
       else
-        wins(@player2Name)
+        wins(player2Name)
        end
     else
-      "#{in_words(@p1points)}-#{in_words(@p2points)}"
+      "#{in_words(p1points)}-#{in_words(p2points)}"
     end
   end
 
   private
   def deuce?
-    lead == 0 && @p1points >= 3
+    lead == 0 && p1points >= 3
   end
   
   def wins(player)
@@ -54,7 +55,7 @@ class TennisGame1
   end
 
   def lead
-    @p1points - @p2points
+    p1points - p2points
   end
 
   def in_words(points)
