@@ -28,7 +28,7 @@ class TennisGame1
     if (@p1points>=4 || @p2points>=4)
       if (lead == 1)
         advantage(@player1Name)
-      elsif (lead ==-1)
+      elsif (lead == -1)
         advantage(@player2Name)
       elsif (lead >= 2)
         wins(@player1Name)
