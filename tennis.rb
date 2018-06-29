@@ -24,11 +24,7 @@ class TennisGame1
   def score
     return 'Deuce' if deuce?
     if (@p1points==@p2points)
-      {
-        0 => "Love",
-        1 => "Fifteen",
-        2 => "Thirty",
-      }[@p1points] + "-All"
+      POINTS_IN_WORDS[@p1points] + "-All"
     elsif (@p1points>=4 || @p2points>=4)
       if (lead == 1)
         advantage(@player1Name)
