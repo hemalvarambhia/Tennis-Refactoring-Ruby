@@ -18,8 +18,6 @@ class TennisGame1
   
   def score
     return 'Deuce' if deuce?
-    return "#{in_words(p1points)}-All" if p1points == p2points
-
     if (p1points>=4 || p2points>=4)
       return advantage(player1Name) if (lead == 1)
       return advantage(player2Name) if (lead == -1)
@@ -27,6 +25,8 @@ class TennisGame1
       return wins(player2Name) if (lead <= -2)
     end
 
+    return "#{in_words(p1points)}-All" if p1points == p2points
+    
     "#{in_words(p1points)}-#{in_words(p2points)}"
   end
 
