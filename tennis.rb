@@ -21,18 +21,13 @@ class TennisGame1
     return "#{in_words(p1points)}-All" if p1points == p2points
 
     if (p1points>=4 || p2points>=4)
-      if (lead == 1)
-        advantage(player1Name)
-      elsif (lead == -1)
-        advantage(player2Name)
-      elsif (lead >= 2)
-        wins(player1Name)
-      elsif (lead <= -2)
-        wins(player2Name)
-       end
-    else
-      "#{in_words(p1points)}-#{in_words(p2points)}"
+      return advantage(player1Name) if (lead == 1)
+      return advantage(player2Name) if (lead == -1)
+      return wins(player1Name) if (lead >= 2)
+      return wins(player2Name) if (lead <= -2)
     end
+
+    "#{in_words(p1points)}-#{in_words(p2points)}"
   end
 
   private
