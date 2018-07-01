@@ -27,7 +27,7 @@ class TennisGame1
         advantage(player2Name)
       elsif (lead >= 2)
         wins(player1Name)
-      else
+      elsif (lead <= -2)
         wins(player2Name)
        end
     else
