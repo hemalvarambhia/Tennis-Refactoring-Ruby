@@ -1,11 +1,5 @@
 
 class TennisGame1
-  POINTS_IN_WORDS = {
-    0 => "Love",
-    1 => "Fifteen",
-    2 => "Thirty",
-    3 => "Forty",
-  }.freeze
   attr_reader :player1Name, :p1points, :player2Name, :p2points
   def initialize(player1Name, player2Name)
     @player1Name = player1Name
@@ -42,6 +36,13 @@ class TennisGame1
   end
 
   private
+  POINTS_IN_WORDS = {
+    0 => "Love",
+    1 => "Fifteen",
+    2 => "Thirty",
+    3 => "Forty",
+  }.freeze
+    
   def deuce?
     lead == 0 && p1points >= 3
   end
