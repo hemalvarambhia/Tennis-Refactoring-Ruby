@@ -11,7 +11,6 @@ class Player
   end
 end
 
-
 class TennisGame1
   def initialize(player1Name, player2Name)
     @player1 = Player.new(player1Name)
