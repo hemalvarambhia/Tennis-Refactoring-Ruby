@@ -9,6 +9,10 @@ class Player
   def won_point
     @points += 1
   end
+
+  def lead_over(player)
+    @points - player.points
+  end
 end
 
 class TennisGame1
@@ -60,7 +64,7 @@ class TennisGame1
   end
 
   def lead
-    p1points - p2points
+    @player1.lead_over @player2
   end
 
   def in_words(points)
