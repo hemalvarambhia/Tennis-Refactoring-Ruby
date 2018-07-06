@@ -40,22 +40,6 @@ class TennisGame1
     "#{in_words(p1points)}-#{in_words(p2points)}"
   end
 
-  def player1Name
-    @player1.name
-  end
-  
-  def p1points
-    @player1.points
-  end
-
-  def player2Name
-    @player2.name
-  end
-
-  def p2points
-    @player2.points
-  end
-
   private
   POINTS_IN_WORDS = {
     0 => "Love",
@@ -83,6 +67,22 @@ class TennisGame1
   def in_words(points)
     POINTS_IN_WORDS[points]
   end
+
+  def player1Name
+    @player1.name
+  end
+  
+  def p1points
+    @player1.points
+  end
+
+  def player2Name
+    @player2.name
+  end
+
+  def p2points
+    @player2.points
+  end  
 end
 
 class TennisGame2
