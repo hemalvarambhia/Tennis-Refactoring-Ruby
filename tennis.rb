@@ -1,16 +1,28 @@
+class Player
+  attr_reader :name, :points
+  
+  def initialize(name)
+    @name = name
+    @points = 0
+  end
+
+  def won_point
+    @points += 1
+  end
+end
+
 
 class TennisGame1
-  attr_reader :player1Name, :p1points, :player2Name, :p2points
+  attr_reader :player2Name, :p2points
   def initialize(player1Name, player2Name)
-    @player1Name = player1Name
+    @player1 = Player.new(player1Name)
     @player2Name = player2Name
-    @p1points = 0
     @p2points = 0
   end
         
   def won_point(playerName)
-    if playerName == @player1Name
-      @p1points += 1
+    if playerName == @player1.name
+      @player1.won_point
     else
       @p2points += 1
     end
@@ -28,6 +40,14 @@ class TennisGame1
     return "#{in_words(p1points)}-All" if p1points == p2points
     
     "#{in_words(p1points)}-#{in_words(p2points)}"
+  end
+
+  def player1Name
+    @player1.name
+  end
+  
+  def p1points
+    @player1.points
   end
 
   private
