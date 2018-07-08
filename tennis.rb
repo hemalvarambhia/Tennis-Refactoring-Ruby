@@ -33,12 +33,10 @@ class TennisGame1
   
   def score
     return 'Deuce' if deuce?
-    if (p1points>=4 || p2points>=4)
-      return advantage(player1.name) if (lead == 1)
-      return advantage(player2.name) if (lead == -1)
-      return wins(player1.name) if (lead >= 2)
-      return wins(player2.name) if (lead <= -2)
-    end
+    return advantage(player1.name) if (lead == 1 && p1points >= 4)
+    return advantage(player2.name) if (lead == -1 &&  p2points >= 4)
+    return wins(player1.name) if (lead >= 2 && p1points >= 4)
+    return wins(player2.name) if (lead <= -2 &&  p2points >= 4)
 
     return "#{in_words(p1points)}-All" if p1points == p2points
     
@@ -66,7 +64,7 @@ class TennisGame1
   end
 
   def lead
-    @player1.lead_over @player2
+    player1.lead_over player2
   end
 
   def in_words(points)
