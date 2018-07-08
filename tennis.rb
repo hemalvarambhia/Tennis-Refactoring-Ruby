@@ -38,9 +38,9 @@ class TennisGame1
     return wins(player1.name) if player1_won?
     return wins(player2.name) if player2_won?
 
-    return "#{in_words(p1points)}-All" if p1points == p2points
+    return "#{in_words(player1.points)}-All" if player1.lead_over(player2) == 0
     
-    "#{in_words(p1points)}-#{in_words(p2points)}"
+    "#{in_words(player1.points)}-#{in_words(player2.points)}"
   end
 
   private
@@ -52,23 +52,23 @@ class TennisGame1
   }.freeze
     
   def deuce?
-    lead == 0 && p1points >= 3
+    player1.lead_over(player2) == 0 && player1.points >= 3
   end
 
   def advantage_player1?
-    lead == 1 && p1points >= 4
+    player1.lead_over(player2) == 1 && player1.points >= 4
   end
 
   def advantage_player2?
-    lead == -1 && p2points >= 4
+    player2.lead_over(player1) == 1 && player2.points >= 4
   end
 
   def player1_won?
-    lead >= 2 && p1points >= 4
+    player1.lead_over(player2) >= 2 && player1.points >= 4
   end
 
   def player2_won?
-    lead <= -2 && p2points >= 4
+    player2.lead_over(player1) >= 2 && player2.points >= 4
   end
   
   def wins(player)
@@ -79,21 +79,9 @@ class TennisGame1
     "Advantage #{player}"
   end
 
-  def lead
-    player1.lead_over player2
-  end
-
   def in_words(points)
     POINTS_IN_WORDS[points]
   end
-
-  def p1points
-    @player1.points
-  end
-
-  def p2points
-    @player2.points
-  end  
 end
 
 class TennisGame2
