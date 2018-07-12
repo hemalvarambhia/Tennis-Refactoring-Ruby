@@ -33,10 +33,10 @@ class TennisGame1
   
   def score
     return 'Deuce' if deuce?
-    return advantage(player1.name) if advantage_player1?
-    return advantage(player2.name) if advantage_player2?
-    return wins(player1.name) if player1_won?
-    return wins(player2.name) if player2_won?
+    return advantage(player1.name) if advantage?(player1)
+    return advantage(player2.name) if advantage?(player2)
+    return wins(player1.name) if won?(player1)
+    return wins(player2.name) if won?(player2)
 
     return "#{in_words(player1.points)}-All" if player1.lead_over(player2) == 0
     
@@ -55,20 +55,15 @@ class TennisGame1
     player1.lead_over(player2) == 0 && player1.points >= 3
   end
 
-  def advantage_player1?
-    player1.lead_over(player2) == 1 && player1.points >= 4
+  def advantage?(player)
+    opposition = ([player1, player2] - [player]).first
+
+    player.lead_over(opposition) == 1 && player.points >= 4
   end
 
-  def advantage_player2?
-    player2.lead_over(player1) == 1 && player2.points >= 4
-  end
-
-  def player1_won?
-    player1.lead_over(player2) >= 2 && player1.points >= 4
-  end
-
-  def player2_won?
-    player2.lead_over(player1) >= 2 && player2.points >= 4
+  def won?(player)
+    opposition = ([player1, player2] - [player]).first
+    player.lead_over(opposition) >= 2 && player.points >= 4
   end
   
   def wins(player)
