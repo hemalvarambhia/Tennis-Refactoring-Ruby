@@ -57,7 +57,6 @@ class TennisGame1
 
   def advantage?(player)
     opposition = ([player1, player2] - [player]).first
-
     player.lead_over(opposition) == 1 && player.points >= 4
   end
 
