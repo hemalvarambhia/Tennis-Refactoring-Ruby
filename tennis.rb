@@ -97,41 +97,31 @@ class TennisGame2
   def score
     result = ""
     if (@p1points == @p2points and @p1points < 3)
-      result = "Love-All"    if (@p1points == 0)
-      result = "Fifteen-All" if (@p1points == 1)
-      result = "Thirty-All"  if (@p1points == 2)
+      result = "#{in_words(@p1points)}-All"
     end
     result = "Deuce" if (@p1points == @p2points and @p1points > 2)
     
     p1res = ""
     p2res = ""
     if (@p1points > 0 and @p2points == 0)
-      p1res = "Fifteen" if (@p1points == 1)
-      p1res = "Thirty"  if (@p1points == 2)
-      p1res = "Forty"   if (@p1points == 3)
-      p2res = "Love"
+      p1res = in_words(@p1points) if (@p1points <= 3)
+      p2res = in_words(@p2points)
       result = p1res + "-" + p2res
     end
     if (@p2points > 0 and @p1points == 0)
-      p2res = "Fifteen" if (@p2points == 1)
-      p2res = "Thirty"  if (@p2points == 2)
-      p2res = "Forty"   if (@p2points == 3)
-      p1res = "Love"
+      p2res = in_words(@p2points) if (@p2points <= 3)
+      p1res = in_words(@p1points)
       result = p1res + "-" + p2res
     end
     
     if (@p1points>@p2points and @p1points < 4)
-      p1res = "Thirty"  if (@p1points == 2)
-      p1res = "Forty"   if (@p1points == 3)
-      p2res = "Fifteen" if (@p2points == 1)
-      p2res = "Thirty"  if (@p2points == 2)
+      p1res = in_words(@p1points) if (@p1points == 2 || @p1points == 3)
+      p2res = in_words(@p2points) if (@p2points == 1 || @p2points == 2)
       result = p1res + "-" + p2res
     end
     if (@p2points > @p1points and @p2points < 4)
-      p2res = "Thirty"  if (@p2points == 2)
-      p2res = "Forty"   if (@p2points == 3)
-      p1res = "Fifteen" if (@p1points == 1)
-      p1res = "Thirty"    if (@p1points == 2)
+      p2res = in_words(@p2points) if (@p2points == 2 || @p2points == 3)
+      p1res = in_words(@p1points) if (@p1points == 1 || @p1points == 2)
       result = p1res + "-" + p2res
     end
     if (@p1points > @p2points and @p2points >= 3)
@@ -168,6 +158,17 @@ class TennisGame2
   
   def p2Score
     @p2points +=1
+  end
+  
+  POINTS_IN_WORDS = {
+    0 => "Love",
+    1 => "Fifteen",
+    2 => "Thirty",
+    3 => "Forty",
+  }.freeze
+  
+  def in_words(points)
+    POINTS_IN_WORDS[points]
   end
 end
 
