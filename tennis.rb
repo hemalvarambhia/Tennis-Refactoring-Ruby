@@ -99,7 +99,7 @@ class TennisGame2
     if (@p1points == @p2points and @p1points < 3)
       result = "#{in_words(@p1points)}-All"
     end
-    result = "Deuce" if (@p1points == @p2points and @p1points > 2)
+    result = "Deuce" if (@p1points - @p2points == 0) and @p1points >= 3
     
     p1res = ""
     p2res = ""
