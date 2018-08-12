@@ -97,10 +97,9 @@ class TennisGame2
   def score
     result = ""
     if (@p1points == @p2points and @p1points < 3)
-      result = "Love"    if (@p1points == 0)
-      result = "Fifteen" if (@p1points == 1)
-      result = "Thirty"  if (@p1points == 2)
-      result += "-All"
+      result = "Love-All"    if (@p1points == 0)
+      result = "Fifteen-All" if (@p1points == 1)
+      result = "Thirty-All"  if (@p1points == 2)
     end
     result = "Deuce" if (@p1points == @p2points and @p1points > 2)
     
@@ -150,6 +149,7 @@ class TennisGame2
     result
   end
 
+  private
   def setp1Score(number)
     (0..number).each do |i|
       p1Score()
