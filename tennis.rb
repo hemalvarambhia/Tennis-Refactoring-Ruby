@@ -125,16 +125,16 @@ class TennisGame2
       result = p1res + "-" + p2res
     end
     if (@p1points > @p2points and @p2points >= 3)
-      result = "Advantage " + @player1Name
+      result = advantage(@player1Name)
     end
     if (@p2points > @p1points and @p1points >= 3)
-      result = "Advantage " + @player2Name
+      result = advantage(@player2Name)
     end
     if (@p1points >= 4 and @p2points >= 0 and (@p1points-@p2points) >= 2)
-      result = "Win for " + @player1Name
+      result = wins(@player1Name)
     end
     if (@p2points >= 4 and @p1points >= 0 and (@p2points-@p1points) >= 2)
-      result = "Win for " + @player2Name
+      result = wins(@player2Name)
     end
     result
   end
@@ -146,6 +146,14 @@ class TennisGame2
   
   def p2Score
     @p2points +=1
+  end
+
+  def advantage(player)
+    "Advantage " + player
+  end
+
+  def wins(player)
+    "Win for " + player
   end
   
   POINTS_IN_WORDS = {
