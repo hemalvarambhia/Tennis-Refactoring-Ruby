@@ -99,7 +99,7 @@ class TennisGame2
     if (@p1points == @p2points and @p1points < 3)
       result = "#{in_words(@p1points)}-All"
     end
-    result = "Deuce" if (@p1points - @p2points == 0) and @p1points >= 3
+    return "Deuce" if deuce?
     
     p1res = ""
     p2res = ""
@@ -146,6 +146,10 @@ class TennisGame2
   
   def p2Score
     @p2points +=1
+  end
+
+  def deuce?
+    (@p1points - @p2points == 0) && @p1points >= 3
   end
 
   def advantage(player)
