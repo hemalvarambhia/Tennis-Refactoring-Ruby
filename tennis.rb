@@ -95,7 +95,6 @@ class TennisGame2
   end
 
   def score
-    result = ""
     if (@p1points == @p2points && @p1points < 3)
       return "#{in_words(@p1points)}-All"
     end
@@ -104,36 +103,30 @@ class TennisGame2
     return advantage(@player1Name) if advantage_player1?
     return advantage(@player2Name) if advantage_player2?
 
-    if player_1_wins?
-      return wins(@player1Name)
-    end
-    if player_2_wins?
-      return wins(@player2Name)
-    end
+    return wins(@player1Name) if player_1_wins?
+    return wins(@player2Name) if player_2_wins?
     
     if (@p1points > 0 && @p2points == 0)
       p1res = in_words(@p1points) if (@p1points <= 3)
       p2res = in_words(@p2points)
-      result = p1res + "-" + p2res
+      return p1res + "-" + p2res
     end
     if (@p2points > 0 && @p1points == 0)
       p2res = in_words(@p2points) if (@p2points <= 3)
       p1res = in_words(@p1points)
-      result = p1res + "-" + p2res
+      return p1res + "-" + p2res
     end
     
     if (@p1points>@p2points && @p1points < 4)
       p1res = in_words(@p1points) if (@p1points == 2 || @p1points == 3)
       p2res = in_words(@p2points) if (@p2points == 1 || @p2points == 2)
-      result = p1res + "-" + p2res
+      return p1res + "-" + p2res
     end
     if (@p2points > @p1points && @p2points < 4)
       p2res = in_words(@p2points) if (@p2points == 2 || @p2points == 3)
       p1res = in_words(@p1points) if (@p1points == 1 || @p1points == 2)
-      result = p1res + "-" + p2res
+      return p1res + "-" + p2res
     end
-
-    result
   end
 
   private
