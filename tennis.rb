@@ -111,8 +111,6 @@ class TennisGame2
       return wins(@player2Name)
     end
     
-    p1res = ""
-    p2res = ""
     if (@p1points > 0 && @p2points == 0)
       p1res = in_words(@p1points) if (@p1points <= 3)
       p2res = in_words(@p2points)
