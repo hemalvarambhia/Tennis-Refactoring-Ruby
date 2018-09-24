@@ -107,24 +107,24 @@ class TennisGame2
     return wins(@player2Name) if player_2_wins?
     
     if (@p1points > 0 && @p2points == 0)
-      p1res = in_words(@p1points) if (@p1points <= 3)
+      p1res = in_words(@p1points)
       p2res = in_words(@p2points)
       return "#{p1res}-#{p2res}"
     end
     if (@p2points > 0 && @p1points == 0)
-      p2res = in_words(@p2points) if (@p2points <= 3)
+      p2res = in_words(@p2points)
       p1res = in_words(@p1points)
       return "#{p1res}-#{p2res}"
     end
     
     if (@p1points>@p2points && @p1points < 4)
-      p1res = in_words(@p1points) if (@p1points == 2 || @p1points == 3)
-      p2res = in_words(@p2points) if (@p2points == 1 || @p2points == 2)
+      p1res = in_words(@p1points)
+      p2res = in_words(@p2points)
       return "#{p1res}-#{p2res}"
     end
 
-    p2res = in_words(@p2points) if (@p2points == 2 || @p2points == 3)
-    p1res = in_words(@p1points) if (@p1points == 1 || @p1points == 2)
+    p2res = in_words(@p2points)
+    p1res = in_words(@p1points)
     return "#{p1res}-#{p2res}"
   end
 
