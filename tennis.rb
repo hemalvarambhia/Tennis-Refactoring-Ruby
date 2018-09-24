@@ -106,9 +106,7 @@ class TennisGame2
     return wins(@player1Name) if player_1_wins?
     return wins(@player2Name) if player_2_wins?
 
-    p2res = in_words(@p2points)
-    p1res = in_words(@p1points)
-    return "#{p1res}-#{p2res}"
+    "#{in_words(@p1points)}-#{in_words(@p2points)}"
   end
 
   private
