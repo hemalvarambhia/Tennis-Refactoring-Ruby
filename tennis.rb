@@ -97,9 +97,19 @@ class TennisGame2
   def score
     result = ""
     if (@p1points == @p2points && @p1points < 3)
-      result = "#{in_words(@p1points)}-All"
+      return "#{in_words(@p1points)}-All"
     end
     return "Deuce" if deuce?
+
+    return advantage(@player1Name) if advantage_player1?
+    return advantage(@player2Name) if advantage_player2?
+
+    if player_1_wins?
+      return wins(@player1Name)
+    end
+    if player_2_wins?
+      return wins(@player2Name)
+    end
     
     p1res = ""
     p2res = ""
@@ -125,15 +135,6 @@ class TennisGame2
       result = p1res + "-" + p2res
     end
 
-    result = advantage(@player1Name) if advantage_player1?
-    result = advantage(@player2Name) if advantage_player2?
-    
-    if player_1_wins?
-      result = wins(@player1Name)
-    end
-    if player_2_wins?
-      result = wins(@player2Name)
-    end
     result
   end
 
