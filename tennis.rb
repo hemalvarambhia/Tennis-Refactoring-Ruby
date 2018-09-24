@@ -128,10 +128,10 @@ class TennisGame2
     result = advantage(@player1Name) if advantage_player1?
     result = advantage(@player2Name) if advantage_player2?
     
-    if (@p1points >= 4 && @p2points >= 0 && (@p1points-@p2points) >= 2)
+    if player_1_wins?
       result = wins(@player1Name)
     end
-    if (@p2points >= 4 && @p1points >= 0 && (@p2points-@p1points) >= 2)
+    if player_2_wins?
       result = wins(@player2Name)
     end
     result
@@ -160,6 +160,14 @@ class TennisGame2
   
   def advantage(player)
     "Advantage " + player
+  end
+
+  def player_1_wins?
+    (@p1points >= 4 && @p2points >= 0 && (@p1points-@p2points) >= 2)
+  end
+
+  def player_2_wins?
+    (@p2points >= 4 && @p1points >= 0 && (@p2points-@p1points) >= 2)
   end
 
   def wins(player)
