@@ -122,11 +122,10 @@ class TennisGame2
       p2res = in_words(@p2points) if (@p2points == 1 || @p2points == 2)
       return "#{p1res}-#{p2res}"
     end
-    if (@p2points > @p1points && @p2points < 4)
-      p2res = in_words(@p2points) if (@p2points == 2 || @p2points == 3)
-      p1res = in_words(@p1points) if (@p1points == 1 || @p1points == 2)
-      return "#{p1res}-#{p2res}"
-    end
+
+    p2res = in_words(@p2points) if (@p2points == 2 || @p2points == 3)
+    p1res = in_words(@p1points) if (@p1points == 1 || @p1points == 2)
+    return "#{p1res}-#{p2res}"
   end
 
   private
