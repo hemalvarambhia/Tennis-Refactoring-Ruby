@@ -87,6 +87,7 @@ class TennisGame2
     @player2Name = player2Name
     @p1points = 0
     @p2points = 0
+    @player_1 = Player.new(player1Name)
   end
       
   def won_point(playerName)
@@ -115,6 +116,7 @@ class TennisGame2
   private
   def p1Score
     @p1points +=1
+    @player_1.won_point
   end
   
   def p2Score
