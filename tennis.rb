@@ -79,7 +79,7 @@ class TennisGame1
 end
 
 class TennisGame2
-  attr_reader :player1Name
+  attr_reader :player1Name, :player2Name
   attr_reader :p1points, :p2points
   
   def initialize(player1Name, player2Name)
@@ -104,10 +104,10 @@ class TennisGame2
     return "Deuce" if deuce?
 
     return advantage(player1Name) if advantage_player1?
-    return advantage(@player2Name) if advantage_player2?
+    return advantage(player2Name) if advantage_player2?
 
     return wins(player1Name) if player_1_wins?
-    return wins(@player2Name) if player_2_wins?
+    return wins(player2Name) if player_2_wins?
 
     "#{in_words(p1points)}-#{in_words(p2points)}"
   end
