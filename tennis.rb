@@ -86,9 +86,9 @@ class TennisGame2
       
   def won_point(playerName)
     if playerName == player1Name
-      p1Score
+      @player_1.won_point
     else
-      p2Score
+      @player_2.won_point
     end
   end
 
@@ -108,14 +108,6 @@ class TennisGame2
   end
 
   private
-  def p1Score
-    @player_1.won_point
-  end
-  
-  def p2Score
-    @player_2.won_point
-  end
-
   def deuce?
     (p1points - p2points == 0) && p1points >= 3
   end
