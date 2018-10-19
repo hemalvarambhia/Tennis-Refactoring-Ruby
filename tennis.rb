@@ -141,7 +141,7 @@ class TennisGame2
   end
 
   def wins(player)
-    "Win for " + player
+    "Win for #{player}"
   end
   
   POINTS_IN_WORDS = {
