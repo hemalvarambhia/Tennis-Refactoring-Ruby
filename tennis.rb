@@ -109,15 +109,20 @@ class TennisGame2
 
   private
   def deuce?
-    (p1points - p2points == 0) && p1points >= 3
+    @player_1.lead_over(@player_2) == 0 && @player_1.points >= 3
   end
 
   def advantage_player1?
-    (p1points - p2points == 1) && p2points >= 3
+    advantage?(@player_1)
   end
 
   def advantage_player2?
-    (p2points - p1points == 1) && p1points >= 3
+    advantage?(@player_2)
+  end
+
+  def advantage?(player)
+    opposition = ([@player_1, @player_2] - [player]).first
+    player.lead_over(opposition) == 1 && player.points >= 4
   end
   
   def advantage(player)
