@@ -100,22 +100,22 @@ class TennisGame2
     end
     return "Deuce" if deuce?
 
-    return advantage(player_1.name) if advantage?(@player_1)
-    return advantage(player_2.name) if advantage?(@player_2)
+    return advantage(player_1.name) if advantage?(player_1)
+    return advantage(player_2.name) if advantage?(player_2)
 
-    return wins(player_1.name) if won?(@player_1)
-    return wins(player_2.name) if won?(@player_2)
+    return wins(player_1.name) if won?(player_1)
+    return wins(player_2.name) if won?(player_2)
 
     "#{in_words(player_1.points)}-#{in_words(player_2.points)}"
   end
 
   private
   def deuce?
-    @player_1.lead_over(@player_2) == 0 && @player_1.points >= 3
+    player_1.lead_over(player_2) == 0 && player_1.points >= 3
   end
 
   def advantage?(player)
-    opposition = ([@player_1, @player_2] - [player]).first
+    opposition = ([player_1, player_2] - [player]).first
     player.lead_over(opposition) == 1 && player.points >= 4
   end
   
@@ -124,7 +124,7 @@ class TennisGame2
   end
 
   def won?(player)
-    opposition = ([@player_1, @player_2] - [player]).first
+    opposition = ([player_1, player_2] - [player]).first
 
     player.lead_over(opposition) >=2 &&
       (player.points >= 4 && opposition.points >= 0)
