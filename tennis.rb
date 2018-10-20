@@ -79,13 +79,15 @@ class TennisGame1
 end
 
 class TennisGame2
+  attr_reader :player_1, :player_2
+  
   def initialize(player1Name, player2Name)
     @player_1 = Player.new(player1Name)
     @player_2 = Player.new(player2Name)
   end
       
   def won_point(playerName)
-    if playerName == player1Name
+    if playerName == player_1.name
       @player_1.won_point
     else
       @player_2.won_point
@@ -93,18 +95,18 @@ class TennisGame2
   end
 
   def score
-    if (p1points == p2points && p1points < 3)
-      return "#{in_words(p1points)}-All"
+    if (player_1.points == player_2.points && player_1.points < 3)
+      return "#{in_words(player_1.points)}-All"
     end
     return "Deuce" if deuce?
 
-    return advantage(player1Name) if advantage?(@player_1)
-    return advantage(player2Name) if advantage?(@player_2)
+    return advantage(player_1.name) if advantage?(@player_1)
+    return advantage(player_2.name) if advantage?(@player_2)
 
-    return wins(player1Name) if won?(@player_1)
-    return wins(player2Name) if won?(@player_2)
+    return wins(player_1.name) if won?(@player_1)
+    return wins(player_2.name) if won?(@player_2)
 
-    "#{in_words(p1points)}-#{in_words(p2points)}"
+    "#{in_words(player_1.points)}-#{in_words(player_2.points)}"
   end
 
   private
@@ -141,22 +143,6 @@ class TennisGame2
   
   def in_words(points)
     POINTS_IN_WORDS[points]
-  end
-
-  def player1Name
-    @player_1.name
-  end
-
-  def p1points
-    @player_1.points
-  end
-
-  def player2Name
-    @player_2.name
-  end
-
-  def p2points
-    @player_2.points
   end
 end
 
