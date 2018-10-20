@@ -122,11 +122,18 @@ class TennisGame2
   end
 
   def player_1_wins?
-    (p1points >= 4 && p2points >= 0 && (p1points - p2points) >= 2)
+    won?(@player_1)
   end
 
   def player_2_wins?
-    (p2points >= 4 && p1points >= 0 && (p2points - p1points) >= 2)
+    won?(@player_2)
+  end
+
+  def won?(player)
+    opposition = ([@player_1, @player_2] - [player]).first
+
+    player.lead_over(opposition) >=2 &&
+      (player.points >= 4 && opposition.points >= 0)
   end
 
   def wins(player)
