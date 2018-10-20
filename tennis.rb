@@ -101,7 +101,7 @@ class TennisGame2
     return wins(player_1.name) if won?(player_1)
     return wins(player_2.name) if won?(player_2)
 
-    if (player_1.points == player_2.points && player_1.points < 3)
+    if (player_1.lead_over(player_2) == 0 && player_1.points < 3)
       return "#{in_words(player_1.points)}-All"
     end
 
