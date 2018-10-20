@@ -101,8 +101,8 @@ class TennisGame2
     return advantage(player1Name) if advantage?(@player_1)
     return advantage(player2Name) if advantage?(@player_2)
 
-    return wins(player1Name) if player_1_wins?
-    return wins(player2Name) if player_2_wins?
+    return wins(player1Name) if won?(@player_1)
+    return wins(player2Name) if won?(@player_2)
 
     "#{in_words(p1points)}-#{in_words(p2points)}"
   end
@@ -119,14 +119,6 @@ class TennisGame2
   
   def advantage(player)
     "Advantage " + player
-  end
-
-  def player_1_wins?
-    won?(@player_1)
-  end
-
-  def player_2_wins?
-    won?(@player_2)
   end
 
   def won?(player)
