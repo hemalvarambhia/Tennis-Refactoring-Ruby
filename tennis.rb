@@ -79,42 +79,42 @@ class TennisGame1
 end
 
 class TennisGame2
-  attr_reader :player_1, :player_2
+  attr_reader :player1, :player2
   
   def initialize(player1Name, player2Name)
-    @player_1 = Player.new(player1Name)
-    @player_2 = Player.new(player2Name)
+    @player1 = Player.new(player1Name)
+    @player2 = Player.new(player2Name)
   end
       
   def won_point(playerName)
-    if playerName == player_1.name
-      @player_1.won_point
+    if playerName == player1.name
+      @player1.won_point
     else
-      @player_2.won_point
+      @player2.won_point
     end
   end
 
   def score
     return "Deuce" if deuce?
-    return advantage(player_1.name) if advantage?(player_1)
-    return advantage(player_2.name) if advantage?(player_2)
-    return wins(player_1.name) if won?(player_1)
-    return wins(player_2.name) if won?(player_2)
+    return advantage(player1.name) if advantage?(player1)
+    return advantage(player2.name) if advantage?(player2)
+    return wins(player1.name) if won?(player1)
+    return wins(player2.name) if won?(player2)
 
-    if (player_1.lead_over(player_2) == 0 && player_1.points < 3)
-      return "#{in_words(player_1.points)}-All"
+    if (player1.lead_over(player2) == 0 && player1.points < 3)
+      return "#{in_words(player1.points)}-All"
     end
 
-    "#{in_words(player_1.points)}-#{in_words(player_2.points)}"
+    "#{in_words(player1.points)}-#{in_words(player2.points)}"
   end
 
   private
   def deuce?
-    player_1.lead_over(player_2) == 0 && player_1.points >= 3
+    player1.lead_over(player2) == 0 && player1.points >= 3
   end
 
   def advantage?(player)
-    opposition = ([player_1, player_2] - [player]).first
+    opposition = ([player1, player2] - [player]).first
     player.lead_over(opposition) == 1 && player.points >= 4
   end
   
@@ -123,7 +123,7 @@ class TennisGame2
   end
 
   def won?(player)
-    opposition = ([player_1, player_2] - [player]).first
+    opposition = ([player1, player2] - [player]).first
 
     player.lead_over(opposition) >=2 &&
       (player.points >= 4 && opposition.points >= 0)
