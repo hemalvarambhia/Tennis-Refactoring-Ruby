@@ -162,9 +162,7 @@ class TennisGame3
   end
   
   def score
-    if @p1 >= 3 and @p2 >= 3 && (@p1 == @p2)
-      return "Deuce"
-    end
+    return "Deuce" if deuce?
     
     if (@p1 < 4 and @p2 < 4)
       p = ["Love", "Fifteen", "Thirty", "Forty"]
@@ -175,5 +173,11 @@ class TennisGame3
       s = @p1 > @p2 ? @p1N : @p2N
       (@p1-@p2)*(@p1-@p2) == 1 ? "Advantage " + s : "Win for " + s
     end
+  end
+
+  private
+
+  def deuce?
+    @p1 >= 3 and @p2 >= 3 && (@p1 == @p2)
   end
 end
