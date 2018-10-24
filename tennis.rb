@@ -178,6 +178,6 @@ class TennisGame3
   private
 
   def deuce?
-    @p1 >= 3 and @p2 >= 3 && (@p1 == @p2)
+    @p1 >= 3 && @p2 >= 3 && (@p1 == @p2)
   end
 end
