@@ -162,10 +162,8 @@ class TennisGame3
   end
   
   def score
-    if @p1 >= 3 and @p2 >= 3 
-      if (@p1 == @p2)
-        return "Deuce"
-      end
+    if @p1 >= 3 and @p2 >= 3 && (@p1 == @p2)
+      return "Deuce"
     end
     
     if (@p1 < 4 and @p2 < 4)
