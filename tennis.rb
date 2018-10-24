@@ -168,7 +168,7 @@ class TennisGame3
       end
     end
     
-    if (@p1 < 4 and @p2 < 4) and (@p1 + @p2 < 6)
+    if (@p1 < 4 and @p2 < 4)
       p = ["Love", "Fifteen", "Thirty", "Forty"]
       s = p[@p1]
       return s + "-All" if @p1 == @p2
