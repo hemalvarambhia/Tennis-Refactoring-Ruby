@@ -168,8 +168,7 @@ class TennisGame3
     
     if (@p1 < 4 and @p2 < 4)
       p = ["Love", "Fifteen", "Thirty", "Forty"]
-      s = p[@p1]
-      s + "-" + p[@p2]
+      "#{p[@p1]}-#{p[@p2]}"
     else
       s = @p1 > @p2 ? @p1N : @p2N
       (@p1-@p2)*(@p1-@p2) == 1 ? "Advantage " + s : "Win for " + s
