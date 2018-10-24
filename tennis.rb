@@ -163,11 +163,12 @@ class TennisGame3
   
   def score
     return "Deuce" if deuce?
+    p = %w{Love Fifteen Thirty Forty}
+    return "#{p[@p1]}-All" if @p1 == @p2
     
     if (@p1 < 4 and @p2 < 4)
       p = ["Love", "Fifteen", "Thirty", "Forty"]
       s = p[@p1]
-      return s + "-All" if @p1 == @p2
       s + "-" + p[@p2]
     else
       s = @p1 > @p2 ? @p1N : @p2N
