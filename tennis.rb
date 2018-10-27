@@ -169,14 +169,15 @@ class TennisGame3
       return "Win for #{leading_player}" if lead.magnitude > 1
     end
 
-    p = %w{Love Fifteen Thirty Forty}
-    return "#{p[@p1]}-All" if lead == 0
+    return "#{POINTS_AS_WORDS[@p1]}-All" if lead == 0
 
-    "#{p[@p1]}-#{p[@p2]}"
+    "#{POINTS_AS_WORDS[@p1]}-#{POINTS_AS_WORDS[@p2]}"
   end
 
   private
 
+  POINTS_AS_WORDS = %w{Love Fifteen Thirty Forty}.freeze
+  
   def deuce?
     @p1 >= 3 && @p2 >= 3 && lead == 0
   end
