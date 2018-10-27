@@ -154,7 +154,7 @@ class TennisGame3
   end
       
   def won_point(player_name)
-    if player_name == p1N
+    if player_name == player1.name
       @player1.won_point
     else
       @player2.won_point
@@ -178,7 +178,7 @@ class TennisGame3
   POINTS_AS_WORDS = %w{Love Fifteen Thirty Forty}.freeze
 
   def leading_player
-    player1.points > player2.points ? p1N : p2N
+    player1.points > player2.points ? player1.name : player2.name
   end
   
   def deuce?
@@ -187,13 +187,5 @@ class TennisGame3
 
   def lead
     player1.lead_over(player2)
-  end
-
-  def p1N
-    player1.name
-  end
-
-  def p2N
-    player2.name
   end
 end
