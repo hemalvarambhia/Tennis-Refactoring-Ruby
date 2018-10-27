@@ -146,6 +146,8 @@ class TennisGame2
 end
 
 class TennisGame3
+  attr_reader :p1N, :p1
+  attr_reader :p2N, :p2
   def initialize(player1Name, player2Name)
     @p1N = player1Name
     @p1 = 0
@@ -154,7 +156,7 @@ class TennisGame3
   end
       
   def won_point(player_name)
-    if player_name == @p1N
+    if player_name == p1N
       @p1 += 1
     else
       @p2 += 1
@@ -163,14 +165,14 @@ class TennisGame3
   
   def score
     return "Deuce" if deuce?
-    if(@p1 > 3 || @p2 > 3)
+    if(p1 > 3 || p2 > 3)
       return "Advantage #{leading_player}" if lead.magnitude == 1
       return "Win for #{leading_player}" if lead.magnitude > 1
     end
 
-    return "#{POINTS_AS_WORDS[@p1]}-All" if lead == 0
+    return "#{POINTS_AS_WORDS[p1]}-All" if lead == 0
 
-    "#{POINTS_AS_WORDS[@p1]}-#{POINTS_AS_WORDS[@p2]}"
+    "#{POINTS_AS_WORDS[p1]}-#{POINTS_AS_WORDS[p2]}"
   end
 
   private
@@ -178,14 +180,14 @@ class TennisGame3
   POINTS_AS_WORDS = %w{Love Fifteen Thirty Forty}.freeze
 
   def leading_player
-    @p1 > @p2 ? @p1N : @p2N
+    p1 > p2 ? p1N : p2N
   end
   
   def deuce?
-    @p1 >= 3 && @p2 >= 3 && lead == 0
+    p1 >= 3 && p2 >= 3 && lead == 0
   end
 
   def lead
-    @p1 - @p2
+    p1 - p2
   end
 end
