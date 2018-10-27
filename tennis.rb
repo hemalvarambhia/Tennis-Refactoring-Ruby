@@ -167,9 +167,9 @@ class TennisGame3
     return "#{p[@p1]}-All" if lead == 0
     
     if(@p1 > 3 || @p2 > 3)
-      s = @p1 > @p2 ? @p1N : @p2N
-      return "Advantage " + s if lead.magnitude == 1
-      return "Win for " + s if lead.magnitude > 1
+      leading_player = @p1 > @p2 ? @p1N : @p2N
+      return "Advantage " + leading_player if lead.magnitude == 1
+      return "Win for " + leading_player if lead.magnitude > 1
     end
 
     "#{p[@p1]}-#{p[@p2]}"
