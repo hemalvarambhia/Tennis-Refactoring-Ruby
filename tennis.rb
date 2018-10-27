@@ -166,12 +166,12 @@ class TennisGame3
     p = %w{Love Fifteen Thirty Forty}
     return "#{p[@p1]}-All" if @p1 == @p2
     
-    if (@p1 < 4 and @p2 < 4)
-      "#{p[@p1]}-#{p[@p2]}"
-    else
+    if(@p1 > 3 || @p2 > 3)
       s = @p1 > @p2 ? @p1N : @p2N
-      (@p1-@p2)*(@p1-@p2) == 1 ? "Advantage " + s : "Win for " + s
+      return (@p1-@p2)*(@p1-@p2) == 1 ? "Advantage " + s : "Win for " + s
     end
+
+    "#{p[@p1]}-#{p[@p2]}"
   end
 
   private
