@@ -146,18 +146,16 @@ class TennisGame2
 end
 
 class TennisGame3
-  attr_reader :p2N, :p2
   def initialize(player1Name, player2Name)
     @player1 = Player.new(player1Name)
-    @p2N = player2Name
-    @p2 = 0
+    @player2 = Player.new(player2Name)
   end
       
   def won_point(player_name)
     if player_name == p1N
       @player1.won_point
     else
-      @p2 += 1
+      @player2.won_point
     end
   end
   
@@ -195,5 +193,13 @@ class TennisGame3
 
   def p1N
     @player1.name
+  end
+
+  def p2
+    @player2.points
+  end
+
+  def p2N
+    @player2.name
   end
 end
