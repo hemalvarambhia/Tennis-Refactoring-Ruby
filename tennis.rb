@@ -148,8 +148,8 @@ end
 class TennisGame3
   def initialize(player1Name, player2Name)
     @p1N = player1Name
-    @p2N = player2Name
     @p1 = 0
+    @p2N = player2Name
     @p2 = 0
   end
       
