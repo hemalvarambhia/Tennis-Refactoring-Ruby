@@ -146,6 +146,8 @@ class TennisGame2
 end
 
 class TennisGame3
+  attr_reader :player1, :player2
+  
   def initialize(player1Name, player2Name)
     @player1 = Player.new(player1Name)
     @player2 = Player.new(player2Name)
@@ -188,18 +190,18 @@ class TennisGame3
   end
 
   def p1
-    @player1.points
+    player1.points
   end
 
   def p1N
-    @player1.name
+    player1.name
   end
 
   def p2
-    @player2.points
+    player2.points
   end
 
   def p2N
-    @player2.name
+    player2.name
   end
 end
