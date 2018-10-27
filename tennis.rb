@@ -164,12 +164,12 @@ class TennisGame3
   def score
     return "Deuce" if deuce?
     p = %w{Love Fifteen Thirty Forty}
-    return "#{p[@p1]}-All" if @p1 == @p2
+    return "#{p[@p1]}-All" if lead == 0
     
     if(@p1 > 3 || @p2 > 3)
       s = @p1 > @p2 ? @p1N : @p2N
-      return "Advantage " + s if (@p1-@p2).magnitude == 1
-      return "Win for " + s if (@p1-@p2).magnitude > 1
+      return "Advantage " + s if lead.magnitude == 1
+      return "Win for " + s if lead.magnitude > 1
     end
 
     "#{p[@p1]}-#{p[@p2]}"
@@ -178,6 +178,10 @@ class TennisGame3
   private
 
   def deuce?
-    @p1 >= 3 && @p2 >= 3 && (@p1 == @p2)
+    @p1 >= 3 && @p2 >= 3 && lead == 0
+  end
+
+  def lead
+    @p1 - @p2
   end
 end
