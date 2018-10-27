@@ -153,11 +153,11 @@ class TennisGame3
     @p2 = 0
   end
       
-  def won_point(n)
-    if n == @p1N
-        @p1 += 1
+  def won_point(player_name)
+    if player_name == @p1N
+      @p1 += 1
     else
-        @p2 += 1
+      @p2 += 1
     end
   end
   
