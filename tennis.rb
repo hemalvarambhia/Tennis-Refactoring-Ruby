@@ -165,8 +165,8 @@ class TennisGame3
     return "Deuce" if deuce?
     if(@p1 > 3 || @p2 > 3)
       leading_player = @p1 > @p2 ? @p1N : @p2N
-      return "Advantage " + leading_player if lead.magnitude == 1
-      return "Win for " + leading_player if lead.magnitude > 1
+      return "Advantage #{leading_player}" if lead.magnitude == 1
+      return "Win for #{leading_player}" if lead.magnitude > 1
     end
 
     p = %w{Love Fifteen Thirty Forty}
