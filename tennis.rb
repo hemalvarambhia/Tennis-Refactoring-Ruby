@@ -167,7 +167,6 @@ class TennisGame3
     return "#{p[@p1]}-All" if @p1 == @p2
     
     if (@p1 < 4 and @p2 < 4)
-      p = ["Love", "Fifteen", "Thirty", "Forty"]
       "#{p[@p1]}-#{p[@p2]}"
     else
       s = @p1 > @p2 ? @p1N : @p2N
