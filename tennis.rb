@@ -164,7 +164,6 @@ class TennisGame3
   def score
     return "Deuce" if deuce?
     if(@p1 > 3 || @p2 > 3)
-      leading_player = @p1 > @p2 ? @p1N : @p2N
       return "Advantage #{leading_player}" if lead.magnitude == 1
       return "Win for #{leading_player}" if lead.magnitude > 1
     end
@@ -177,6 +176,10 @@ class TennisGame3
   private
 
   POINTS_AS_WORDS = %w{Love Fifteen Thirty Forty}.freeze
+
+  def leading_player
+    @p1 > @p2 ? @p1N : @p2N
+  end
   
   def deuce?
     @p1 >= 3 && @p2 >= 3 && lead == 0
