@@ -186,7 +186,7 @@ class TennisGame3
   end
 
   def lead
-    player1.points - player2.points
+    player1.lead_over(player2)
   end
 
   def p1N
