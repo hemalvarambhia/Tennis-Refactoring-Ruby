@@ -168,8 +168,9 @@ class TennisGame3
       return "Win for #{leading_player}" if lead.magnitude > 1
     end
 
-    return "#{POINTS_AS_WORDS[player1.points]}-All" if lead == 0
-
+    if player1.lead_over(player2) == 0
+      return "#{POINTS_AS_WORDS[player1.points]}-All"
+    end
     "#{POINTS_AS_WORDS[player1.points]}-#{POINTS_AS_WORDS[player2.points]}"
   end
 
@@ -182,7 +183,8 @@ class TennisGame3
   end
   
   def deuce?
-    player1.points >= 3 && player2.points >= 3 && lead == 0
+    player1.points >= 3 && player2.points >= 3 &&
+      player1.lead_over(player2) == 0
   end
 
   def lead
