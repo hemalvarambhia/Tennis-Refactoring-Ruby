@@ -163,14 +163,14 @@ class TennisGame3
   
   def score
     return "Deuce" if deuce?
-    if(p1 > 3 || p2 > 3)
+    if(player1.points > 3 || player2.points > 3)
       return "Advantage #{leading_player}" if lead.magnitude == 1
       return "Win for #{leading_player}" if lead.magnitude > 1
     end
 
-    return "#{POINTS_AS_WORDS[p1]}-All" if lead == 0
+    return "#{POINTS_AS_WORDS[player1.points]}-All" if lead == 0
 
-    "#{POINTS_AS_WORDS[p1]}-#{POINTS_AS_WORDS[p2]}"
+    "#{POINTS_AS_WORDS[player1.points]}-#{POINTS_AS_WORDS[player2.points]}"
   end
 
   private
@@ -178,27 +178,19 @@ class TennisGame3
   POINTS_AS_WORDS = %w{Love Fifteen Thirty Forty}.freeze
 
   def leading_player
-    p1 > p2 ? p1N : p2N
+    player1.points > player2.points ? p1N : p2N
   end
   
   def deuce?
-    p1 >= 3 && p2 >= 3 && lead == 0
+    player1.points >= 3 && player2.points >= 3 && lead == 0
   end
 
   def lead
-    p1 - p2
-  end
-
-  def p1
-    player1.points
+    player1.points - player2.points
   end
 
   def p1N
     player1.name
-  end
-
-  def p2
-    player2.points
   end
 
   def p2N
