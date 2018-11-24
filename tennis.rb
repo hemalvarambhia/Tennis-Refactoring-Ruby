@@ -174,7 +174,9 @@ class TennisGame3
 
   private
 
-  POINTS_AS_WORDS = %w{Love Fifteen Thirty Forty}.freeze
+  POINTS_AS_WORDS = {
+    0 => 'Love', 1 => 'Fifteen', 2 => 'Thirty', 3 => 'Forty'
+  }.freeze
 
   def leading_player
     player1.points > player2.points ? player1.name : player2.name
