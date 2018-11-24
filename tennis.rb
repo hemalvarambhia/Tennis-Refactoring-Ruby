@@ -163,8 +163,8 @@ class TennisGame3
   
   def score
     return "Deuce" if deuce?
+    return "Advantage #{leading_player}" if advantage?
     if(player1.points > 3 || player2.points > 3)
-      return "Advantage #{leading_player}" if lead.magnitude == 1
       return "Win for #{leading_player}" if lead.magnitude > 1
     end
 
@@ -180,6 +180,10 @@ class TennisGame3
 
   def leading_player
     player1.points > player2.points ? player1.name : player2.name
+  end
+
+  def advantage?
+    lead.magnitude == 1 && (player1.points > 3 || player2.points > 3)
   end
   
   def deuce?
